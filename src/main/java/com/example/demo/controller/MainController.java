@@ -10,13 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
     @GetMapping("/home")
-    public String sampleTest() {
+    public String home() {
         return "home";
     }
-
     @GetMapping("/login")
-    public String sampleTest2(Model model) {
-        model.addAttribute("name", "이걸 또하고 있을줄이야");
+    public String login() {
         return "login";
+    }
+    @GetMapping("/join")
+    public String join() {
+        return "join";
     }
 }

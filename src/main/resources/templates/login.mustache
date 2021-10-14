@@ -7,9 +7,7 @@
     <title>Document</title>
 </head>
 <script>
-    $("#login").onclick(function () {
-        alert("hello");
-    })
+
 </script>
 {{>header}}
 <body style="background-color: antiquewhite;">
@@ -25,7 +23,7 @@
     </div>
     <div style="margin: 0 auto; text-align: center; padding-top: 20px;">
         <button type="button" class="btn btn-primary" name="login" id="login">로그인</button>
-        <button type="button" class="btn btn-success" name="join" id="join">회원가입</button>
+        <button type="button" class="btn btn-success" name="join" id="join" onclick="location.href='/main/join'">회원가입</button>
     </div>
 </body>
 <script>
