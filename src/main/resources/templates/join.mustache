@@ -50,6 +50,8 @@
         let password = document.getElementById("password");
         let irum = document.getElementById("irum");
         let email = document.getElementById("email");
+        let address = document.getElementById("address");
+        let addressDetail = document.getElementById("addressDetail");
         if (username.value == "" || username.value == null) {
             alert("아이디를 입력해주세요.");
             username.focus();
@@ -63,11 +65,13 @@
             alert("이메일을 입력해주세요.");
             email.focus();
         } else {
+            let fullAddr = address.value + addressDetail.value;
             let inputData = {
                 "username": username.value,
                 "password": password.value,
                 "irum": irum.value,
-                "email": email.value
+                "email": email.value,
+                "address": fullAddr
             }
             $.ajax({
                 url: "/member/join",

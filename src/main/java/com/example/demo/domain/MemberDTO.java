@@ -13,5 +13,4 @@ public class MemberDTO {
     public String irum;
     public String email;
     public String address;
-    public String addressDetail;
 }

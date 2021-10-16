@@ -20,7 +20,7 @@ dependencies {
     runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
-
+	implementation 'mysql:mysql-connector-java:8.0.16'
 }
 
 test {
