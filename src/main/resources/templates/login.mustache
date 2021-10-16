@@ -23,11 +23,41 @@
     </div>
     <div style="margin: 0 auto; text-align: center; padding-top: 20px;">
         <button type="button" class="btn btn-primary" name="login" id="login">로그인</button>
-        <button type="button" class="btn btn-success" name="join" id="join" onclick="location.href='/main/join'">회원가입</button>
+        <button type="button" class="btn btn-success" name="join" id="join">회원가입</button>
     </div>
 </body>
-<script>
-
-</script>
 {{>footer}}
+<script>
+    $("#login").on("click", function () {
+        let username = document.getElementById("username");
+        let password = document.getElementById("password");
+        if(username.value == "" || username.value == null) {
+            alert("아이디를 입력해주세요.");
+            username.focus();
+        } else if(password.value == "" || password.value == null) {
+            alert("비밀번호를 입력해주세요.");
+            password.focus();
+        } else {
+            let loginData = {
+                "username": username.value,
+                "password": password.value
+            }
+            $.ajax({
+                url: "/member/login",
+                data: JSON.stringify(loginData),
+                contentType: "application/json; charset=UTF-8",
+                method: "POST",
+                success: function (res) {
+                    if(res == "loginSuccess") {
+                        alert("로그인 완료");
+                    }
+                }
+            });
+        }
+    });
+
+    $("#join").on("click", function () {
+        location.href = "/main/join";
+    });
+</script>
 </html>

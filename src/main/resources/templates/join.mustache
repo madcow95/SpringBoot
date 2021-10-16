@@ -9,50 +9,78 @@
     <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.3.min.js"></script>
 </head>
 {{>header}}
-    <form action="/member/join" method="post" name="frm">
-        <div style="margin: 0 auto; text-align: center; padding-top: 10%;">
-            <div class="form-group" >
-                <label for="exampleInputId1" style="color: darkslategray;">아이디</label>
-                <input type="text" class="form-control" id="username" name="username" placeholder="아이디를 입력하세요" style="width: 25%; margin: 0 auto; text-align: center">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1" style="color: darkslategray;">비밀번호</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력하세요" style="width: 25%; margin: 0 auto; text-align: center">
-            </div>
-            <div class="form-group" >
-                <label for="exampleInputName1" style="color: darkslategray;">이름</label>
-                <input type="text" class="form-control" id="irum" name="irum" style="width: 25%; margin: 0 auto; text-align: center">
-            </div>
-            <div class="form-group" >
-                <label for="exampleInputEmail11" style="color: darkslategray;">이메일</label>
-                <input type="email" class="form-control" id="email" name="email" style="width: 25%; margin: 0 auto; text-align: center">
-            </div>
-            <div class="form-group" >
-                <label for="exampleInputAddress1" style="color: darkslategray;">이메일<button type="button" class="btn btn-primary" name="findAddr" id="findAddr">주소찾기</button></label>
-                <input type="text" class="form-control" id="address" name="address" style="width: 25%; margin: 0 auto; text-align: center">
-                <label for="exampleInputAddressDetail1" style="color: darkslategray;">상세주소</label>
-                <input type="text" class="form-control" id="addressDetail" name="addressDetail" style="width: 25%; margin: 0 auto; text-align: center">
-            </div>
+    <div style="margin: 0 auto; text-align: center; padding-top: 10%;">
+        <div class="form-group" >
+            <label for="exampleInputId1" style="color: darkslategray;">아이디</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="아이디를 입력하세요" style="width: 25%; margin: 0 auto; text-align: center">
         </div>
-    </form>
+        <div class="form-group">
+            <label for="exampleInputPassword1" style="color: darkslategray;">비밀번호</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호를 입력하세요" style="width: 25%; margin: 0 auto; text-align: center">
+        </div>
+        <div class="form-group" >
+            <label for="exampleInputName1" style="color: darkslategray;">이름</label>
+            <input type="text" class="form-control" id="irum" name="irum" style="width: 25%; margin: 0 auto; text-align: center">
+        </div>
+        <div class="form-group" >
+            <label for="exampleInputEmail11" style="color: darkslategray;">이메일</label>
+            <input type="email" class="form-control" id="email" name="email" style="width: 25%; margin: 0 auto; text-align: center">
+        </div>
+        <div class="form-group" >
+            <label for="exampleInputAddress1" style="color: darkslategray;">이메일<button type="button" class="btn btn-primary" name="findAddr" id="findAddr" style="margin-left: 10px;">주소찾기</button></label>
+            <input type="text" class="form-control" id="address" name="address" style="width: 25%; margin: 0 auto; text-align: center">
+            <label for="exampleInputAddressDetail1" style="color: darkslategray;">상세주소</label>
+            <input type="text" class="form-control" id="addressDetail" name="addressDetail" style="width: 25%; margin: 0 auto; text-align: center">
+        </div>
+    </div>
     <div style="margin: 0 auto; text-align: center; padding-top: 20px;">
         <button type="button" class="btn btn-danger" name="cancel" id="cancel">취소</button>
-        <button type="button" class="btn btn-success" name="join" id="join" onclick="join()">회원가입</button>
+        <button type="button" class="btn btn-success" name="join" id="join">회원가입</button>
     </div>
 
 <body style="background-color: antiquewhite;">
 </body>
 </div>
 <script type="text/javascript">
-    console.log("제이쿼리 어떻게 쓰는거지...?")
-    function join() {
+    $("#cancel").on("click", function () {
+       location.href = "/main/home";
+    });
+    $("#join").on("click", function () {
         let username = document.getElementById("username");
-        if(username.value == "" || username.value == null) {
+        let password = document.getElementById("password");
+        let irum = document.getElementById("irum");
+        let email = document.getElementById("email");
+        if (username.value == "" || username.value == null) {
             alert("아이디를 입력해주세요.");
             username.focus();
+        } else if (password.value == "" || password.value == null) {
+            alert("비밀번호를 입력해주세요.");
+            password.focus();
+        } else if (irum.value == "" || irum.value == null) {
+            alert("이름을 입력해주세요.");
+            irum.focus()
+        } else if (email.value == "" || email.value == null) {
+            alert("이메일을 입력해주세요.");
+            email.focus();
         } else {
-            document.frm.submit();
+            let inputData = {
+                "username": username.value,
+                "password": password.value,
+                "irum": irum.value,
+                "email": email.value
+            }
+            $.ajax({
+                url: "/member/join",
+                data: JSON.stringify(inputData),
+                method: "POST",
+                contentType: "application/json; charset=UTF-8",
+                success: function (res) {
+                    if(res == "joinSuccess") {
+                        alert("회원가입 완료");
+                    }
+                }
+            });
         }
-    }
+    });
 </script>
 </html>

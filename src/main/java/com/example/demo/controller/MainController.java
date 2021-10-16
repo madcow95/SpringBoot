@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
     @GetMapping("/home")
-    public String home() {
-        return "home";
-    }
+    public String home() { return "home"; }
     @GetMapping("/login")
     public String login() {
         return "login";
@@ -21,4 +19,6 @@ public class MainController {
     public String join() {
         return "join";
     }
+    @GetMapping("/board")
+    public String board(){ return "board"; }
 }
