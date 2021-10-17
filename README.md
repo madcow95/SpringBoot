@@ -13,7 +13,7 @@
 <br>
 
 ### 10/13 header, footer 생성해서 localize
-#### 1. 제곧내 피곤해서 이거만 했다..
+#### 1. 제곧내
 <br>
 
 ### 10/14 join, submit으로 controller에 데이터 넘기기
