@@ -63,14 +63,19 @@
     });
 
     $("#findIdBtn").on("click", function () {
-       $.ajax({
-          url: "/member/findIdByEmail",
-          data: "email="+$("#findIdByEmail").val(),
-          method: "POST",
-          success: function (res) {
-              console.log("email send success >>>> " + res);
-          }
-       });
+        if($("#findIdByEmail").val() == "") {
+            alert("이메일을 입력해주세요");
+            $("#findIdByEmail").focus();
+        } else {
+            $.ajax({
+                url: "/member/findIdByEmail",
+                data: "email="+$("#findIdByEmail").val(),
+                method: "POST",
+                success: function (res) {
+                    console.log("email send success >>>> " + res);
+                }
+            });
+        }
     });
 
     $("#findPwdBtn").on("click", function () {
@@ -78,15 +83,23 @@
             "username": $("#findPwdById").val(),
             "email": $("#findPwdByEmail").val()
         }
-       $.ajax({
-           url: "/member/findPwdByInfo",
-           data: JSON.stringify(findPwdInfo),
-           method: "POST",
-           contentType: "application/json; charset=UTF-8",
-           success: function (res) {
-              console.log("email send success >>>> " + res);
-           }
-       });
+        if($("#findPwdById").val() == "" || $("#findPwdById").val() == null) {
+            alert("아이디를 입력해주세요.");
+            $("#findPwdById").focus();
+        } else if($("#findPwdByEmail").val() == null || $("#findPwdByEmail").val() == "") {
+            alert("이메일을 입력해주세요.");
+            $("#findPwdByEmail").focus();
+        } else {
+            $.ajax({
+                url: "/member/findPwdByInfo",
+                data: JSON.stringify(findPwdInfo),
+                method: "POST",
+                contentType: "application/json; charset=UTF-8",
+                success: function (res) {
+                    console.log("email send success >>>> " + res);
+                }
+            });
+        }
     });
 </script>
 </html>
