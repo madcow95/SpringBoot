@@ -10,8 +10,8 @@ import java.util.Map;
 @Service
 public class MemberServiceImpl implements MemberService {
 
-    @Autowired
-    public MemberMapper mMapper;
+//    @Autowired
+//    public MemberMapper mMapper;
 
     @Override
     public int login(Map<String, String> loginMap) throws Exception {
