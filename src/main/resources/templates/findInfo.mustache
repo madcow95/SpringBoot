@@ -63,7 +63,7 @@
     });
 
     $("#findIdBtn").on("click", function () {
-        if($("#findIdByEmail").val() == "") {
+        if($("#findIdByEmail").val() == "" || $("#findIdByEmail").val() == null) {
             alert("이메일을 입력해주세요");
             $("#findIdByEmail").focus();
         } else {
