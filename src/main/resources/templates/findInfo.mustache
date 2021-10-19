@@ -11,8 +11,8 @@
     <div style="margin: 0 auto; text-align: center; padding-top: 10%;">
         <div class="radio">
             <label>
-                아이디 찾기 : <input type="radio" name="findId" id="findId" value="option1"><br>
-                비밀번호 찾기 : <input type="radio" name="findPwd" id="findPwd" value="option2">
+                아이디 찾기 : <input type="radio" name="findId" id="findId"><br>
+                비밀번호 찾기 : <input type="radio" name="findPwd" id="findPwd">
             </label>
         </div>
         <div class="form-group" id="findIdByEmailDiv">
@@ -44,19 +44,19 @@
     $("#findPwd").on("click", function () {
         document.getElementById("findId").checked = false;
         $("#findIdByEmailDiv").css("display", "none");
-        $("#findPwdByIdDiv").css("display", "inherit");
-        $("#findPwdByEmailDiv").css("display", "inherit");
+        $("#findPwdByIdDiv").css("display", "");
+        $("#findPwdByEmailDiv").css("display", "");
         $("#findIdBtnDiv").css("display", "none");
-        $("#findPwdBtnDiv").css("display", "inherit");
+        $("#findPwdBtnDiv").css("display", "");
         $("#findIdByEmail").val("");
     });
 
     $("#findId").on("click", function () {
         document.getElementById("findPwd").checked = false;
-        $("#findIdByEmailDiv").css("display", "inherit");
+        $("#findIdByEmailDiv").css("display", "");
         $("#findPwdByIdDiv").css("display", "none");
         $("#findPwdByEmailDiv").css("display", "none");
-        $("#findIdBtnDiv").css("display", "inherit");
+        $("#findIdBtnDiv").css("display", "");
         $("#findPwdBtnDiv").css("display", "none");
         $("#findPwdById").val("");
         $("#findPwdByEmail").val("");
