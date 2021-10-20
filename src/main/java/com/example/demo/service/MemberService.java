@@ -1,8 +1,23 @@
 package com.example.demo.service;
 
-import java.util.Map;
+import com.example.demo.domain.MemberDTO;
+import com.example.demo.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public interface MemberService {
+import java.util.ArrayList;
+import java.util.List;
 
-    public int login(Map<String, String> loginMap) throws Exception;
+@Service
+public class MemberService {
+
+    @Autowired
+    public MemberRepository mRepository;
+
+    public List<MemberDTO> getMemberList() throws Exception {
+
+        List<MemberDTO> mList = new ArrayList<>();
+        mRepository.mList().forEach(data -> mList.add(data));
+        return mList;
+    }
 }
