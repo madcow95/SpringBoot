@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.MemberDTO;
+import com.example.demo.domain.member;
 import com.example.demo.service.MemberService;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -44,12 +43,12 @@ public class MemberController {
     }
 
     @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE }, value = "/test")
-    public ResponseEntity<List<MemberDTO>> getAllmembers() throws Exception {
-        List<MemberDTO> mList = mService.getMemberList();
+    public ResponseEntity<List<member>> getAllmembers() throws Exception {
+        List<member> mList = mService.getMemberList();
         for(int i = 0; i < mList.size(); i++) {
             System.out.println(mList.get(i));
         }
-        return new ResponseEntity<List<MemberDTO>>(mList, HttpStatus.OK);
+        return new ResponseEntity<List<member>>(mList, HttpStatus.OK);
     }
 
 }

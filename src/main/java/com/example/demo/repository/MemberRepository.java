@@ -1,13 +1,15 @@
 package com.example.demo.repository;
 
-import com.example.demo.domain.MemberDTO;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.example.demo.domain.member;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface MemberRepository extends JpaRepository<MemberDTO, String> {
+public interface MemberRepository extends CrudRepository<member, String> {
 
-    public List<MemberDTO> mList() throws  Exception;
+    @Query("SELECT username, password, irum, email, address FROM member WHERE username='test'")
+    public List<member> mList() throws  Exception;
 }
