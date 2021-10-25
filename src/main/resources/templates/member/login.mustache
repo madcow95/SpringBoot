@@ -9,7 +9,7 @@
 <script>
 
 </script>
-{{>header}}
+{{>include/header}}
 <body style="background-color: antiquewhite;">
     <div style="margin: 0 auto; text-align: center; padding-top: 10%;">
         <div class="form-group" >
@@ -27,7 +27,7 @@
         <button type="button" class="btn btn-warning" name="findInfo" id="findInfo">회원정보 찾기</button>
     </div>
 </body>
-{{>footer}}
+{{>include/footer}}
 <script>
     $("#login").on("click", function () {
         let username = document.getElementById("username");

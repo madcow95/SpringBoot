@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-{{>header}}
+{{>include/header}}
 <body style="background-color: antiquewhite;">
 <div style="margin: 0 auto; text-align: center; padding-top: 10%;">
     <div class="form-group" >
@@ -33,7 +33,7 @@
     <button type="button" class="btn btn-primary" name="deleteWrite" id="deleteWrite">게시글 삭제</button>
 </div>
 </body>
-{{>footer}}
+{{>include/footer}}
 <script>
     $("#modifyWrite").on("click", function () {
         $("#title").removeAttr("disabled");

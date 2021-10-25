@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-{{>header}}
+{{>include/header}}
 <body style="background-color: antiquewhite;">
     <div class="table-responsive" style="margin-top: 25px;">
         <table class="table">
@@ -32,7 +32,7 @@
         </div>
     </div>
 </body>
-{{>footer}}
+{{>include/footer}}
 <script>
     $("#createBoard").on("click", function () {
        location.href="/main/createBoard";
