@@ -23,4 +23,8 @@ public class MainController {
     public String board(){ return "board"; }
     @GetMapping("/findInfo")
     public String findInfo() { return "findInfo"; }
+    @GetMapping("/createBoard")
+    public String createBoard() { return "/board/write"; }
+    @GetMapping("/read")
+    public String readBoard() { return "/board/read"; }
 }

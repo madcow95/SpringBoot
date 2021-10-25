@@ -18,14 +18,24 @@
                 <th>평점</th>
             </thead>
             <tbody>
-                <td>이미지를 아직 못넣겠어요.. 어떡하죠?</td>
+                <td><a href="/main/read">이미지를 아직 못넣겠어요.. 어떡하죠?</a></td>
                 <td>영화 제목</td>
                 <td>출연 배우들 주연만 넣을꺼임</td>
                 <td>나</td>
                 <td>1.6</td>
             </tbody>
         </table>
+        <div>
+            <button type="button" id="createBoard">
+                게시글 쓰기
+            </button>
+        </div>
     </div>
 </body>
 {{>footer}}
+<script>
+    $("#createBoard").on("click", function () {
+       location.href="/main/createBoard";
+    });
+</script>
 </html>
