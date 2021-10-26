@@ -1,12 +1,16 @@
 package com.example.demo.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.json.simple.JSONObject;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping("/board")
 public class BoardController {
 
+    @PostMapping("/write")
+    public String boardWrite(@RequestBody JSONObject writeData) {
+        System.out.println(writeData);
+        return "success";
+    }
 
 }

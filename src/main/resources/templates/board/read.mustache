@@ -8,30 +8,35 @@
 </head>
 {{>include/header}}
 <body style="background-color: antiquewhite;">
-<div style="margin: 0 auto; text-align: center; padding-top: 10%;">
-    <div class="form-group" >
-        <label style="color: darkslategray;">작성자</label>
-        <input type="text" class="form-control" id="writer" name="writer" style="width: 25%; margin: 0 auto; text-align: center" disabled>
+    <div style="margin: 0 auto; text-align: center; padding-top: 10%;">
+        <div class="form-group" >
+            <label style="color: darkslategray;">작성자</label>
+            <input type="text" class="form-control" id="writer" name="writer" style="width: 25%; margin: 0 auto; text-align: center" disabled>
+        </div>
+        <div class="form-group" >
+            <label style="color: darkslategray;">제목</label>
+            <input type="text" class="form-control" id="title" name="title" style="width: 25%; margin: 0 auto; text-align: center" disabled>
+        </div>
+        <div class="form-group" >
+            <label style="color: darkslategray;">내용</label>
+            <input type="text" class="form-control" id="content" name="content" style="width: 25%; margin: 0 auto; text-align: center" disabled>
+        </div>
+        <div class="form-group" >
+            <label style="color: darkslategray;">첨부파일 넣을 곳</label>
+            <input type="text" class="form-control" id="file" name="file" style="width: 25%; margin: 0 auto; text-align: center" disabled>
+        </div>
     </div>
-    <div class="form-group" >
-        <label style="color: darkslategray;">제목</label>
-        <input type="text" class="form-control" id="title" name="title" style="width: 25%; margin: 0 auto; text-align: center" disabled>
+    <div style="margin: 0 auto; text-align: center; padding-top: 20px;">
+        <button type="button" class="btn btn-danger" name="cancel" id="cancel">취소</button>
+        <button type="button" class="btn btn-success" name="modifyWrite" id="modifyWrite">게시글 수정</button>
+        <button type="button" class="btn btn-success" name="modifyWriteComp" id="modifyWriteComp" style="display: none">게시글 수정완료</button>
+        <button type="button" class="btn btn-primary" name="deleteWrite" id="deleteWrite">게시글 삭제</button>
     </div>
-    <div class="form-group" >
-        <label style="color: darkslategray;">내용</label>
-        <input type="text" class="form-control" id="content" name="content" style="width: 25%; margin: 0 auto; text-align: center" disabled>
+    <br>
+    <hr>
+    <div style="margin: 0 auto; text-align: center; padding-top: 10%; width: 70%">
+        댓글 넣을곳(테이블로 넣는다)
     </div>
-    <div class="form-group" >
-        <label style="color: darkslategray;">첨부파일 넣을 곳</label>
-        <input type="text" class="form-control" id="file" name="file" style="width: 25%; margin: 0 auto; text-align: center" disabled>
-    </div>
-</div>
-<div style="margin: 0 auto; text-align: center; padding-top: 20px;">
-    <button type="button" class="btn btn-danger" name="cancel" id="cancel">취소</button>
-    <button type="button" class="btn btn-success" name="modifyWrite" id="modifyWrite">게시글 수정</button>
-    <button type="button" class="btn btn-success" name="modifyWriteComp" id="modifyWriteComp" style="display: none">게시글 수정완료</button>
-    <button type="button" class="btn btn-primary" name="deleteWrite" id="deleteWrite">게시글 삭제</button>
-</div>
 </body>
 {{>include/footer}}
 <script>

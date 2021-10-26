@@ -20,6 +20,8 @@ public class MainController {
     }
     @GetMapping("/board")
     public String board(){ return "/board/board"; }
+    @GetMapping("/freeBoard")
+    public String freeBoard(){ return "/board/freeBoard"; }
     @GetMapping("/findInfo")
     public String findInfo() { return "/member/findInfo"; }
     @GetMapping("/createBoard")
