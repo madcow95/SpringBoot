@@ -14,10 +14,13 @@ public class MemberService {
     @Autowired
     public MemberRepository mRepository;
 
-    public List<member> getMemberList() throws Exception {
-
+    public List<member> getMemberList(String test) throws Exception {
+        System.out.println("service >>> " + test);
         List<member> mList = new ArrayList<>();
-        mRepository.mList().forEach(data -> mList.add(data));
+        mList = mRepository.mList();
+        System.out.println("mList size >>> " +mList.size());
+        //mRepository.mList().forEach(data -> mList.add(data));
         return mList;
     }
+
 }

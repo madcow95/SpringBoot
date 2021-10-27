@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Data
-@NoArgsConstructor
+@Setter
+@Getter
 @Entity
 @Table(name = "member")
 public class member {

@@ -48,12 +48,28 @@
     });
 
     $("#modifyWriteComp").on("click", function () {
+        let writer = $("#writer").val();
         let title = $("#title").val();
         let content = $("#content").val();
         $("#title").attr("disabled", "disabled");
         $("#content").attr("disabled", "disabled");
         $("#modifyWrite").css("display", "");
         $("#modifyWriteComp").css("display", "none");
+
+        let inputData = {
+            "writer": writer,
+            "title": title,
+            "content": content
+        }
+        $.ajax({
+           url: "board/modify",
+           data: JSON.stringify(inputData),
+           type: "POST",
+           contentType: "application/json; charset=UTF-8",
+           success: function (res) {
+
+           }
+        });
     });
 </script>
 </html>

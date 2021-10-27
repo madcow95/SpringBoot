@@ -43,10 +43,12 @@ public class MemberController {
     }
 
     @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE }, value = "/test")
-    public ResponseEntity<List<member>> getAllmembers() throws Exception {
-        List<member> mList = mService.getMemberList();
+    public ResponseEntity<List<member>> getAllmembers(@RequestParam("test") String test) throws Exception {
+        System.out.println("test >>> "+test);
+        List<member> mList = mService.getMemberList(test);
+        System.out.println("mList123 >>> "+mList);
         for(int i = 0; i < mList.size(); i++) {
-            System.out.println(mList.get(i));
+            System.out.println("mList1 >>> "+mList.get(i));
         }
         return new ResponseEntity<List<member>>(mList, HttpStatus.OK);
     }
