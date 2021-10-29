@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.domain.member;
 import com.example.demo.service.MemberService;
+import lombok.extern.log4j.Log4j2;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,10 +10,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/member")
+@Log4j2
 public class MemberController {
 
     @Autowired
@@ -25,8 +29,11 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody JSONObject loginData) {
-        System.out.println("username >>> " + loginData.get("username"));
+    public String login(@RequestBody JSONObject loginData) throws Exception {
+        String username = loginData.get("username").toString();
+        String password = loginData.get("password").toString();
+        List<member> m = mService.login(username, password);
+        System.out.println("controllers member r>>> " + m.get(0).getAddress());
         return "loginSuccess";
     }
 
@@ -42,14 +49,9 @@ public class MemberController {
         return "okok";
     }
 
-    @GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE }, value = "/test")
-    public ResponseEntity<List<member>> getAllmembers(@RequestParam("test") String test) throws Exception {
-        System.out.println("test >>> "+test);
-        List<member> mList = mService.getMemberList(test);
-        System.out.println("mList123 >>> "+mList);
-        for(int i = 0; i < mList.size(); i++) {
-            System.out.println("mList1 >>> "+mList.get(i));
-        }
+    @PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE }, value = "/test")
+    public ResponseEntity<List<member>> getAllmembers() throws Exception {
+        List<member> mList = mService.getMemberList();
         return new ResponseEntity<List<member>>(mList, HttpStatus.OK);
     }
 

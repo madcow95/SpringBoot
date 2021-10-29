@@ -17,8 +17,7 @@
     $("#testBtn").on("click", function () {
         $.ajax({
             url: "/member/test",
-            type: "GET",
-            data: "test=test",
+            type: "POST",
             success: function (res) {
                 console.log(res);
             }

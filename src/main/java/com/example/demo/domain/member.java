@@ -1,8 +1,9 @@
 package com.example.demo.domain;
 
+import com.example.demo.mapper.MemberMapper;
+import com.example.demo.repository.MemberRepository;
 import lombok.*;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,22 +12,52 @@ import javax.persistence.Table;
 @Getter
 @Entity
 @Table(name = "member")
-public class member {
+public class member{
 
     @Id
-    @Column(name = "username")
     private String username;
-
-    @Column(name = "password")
     private String password;
-
-    @Column(name = "irum")
     private String irum;
-
-    @Column(name = "email")
     private String email;
-
-    @Column(name = "address")
     private String address;
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setIrum(String irum) {
+        this.irum = irum;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getIrum() {
+        return irum;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
 }
