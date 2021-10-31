@@ -23,30 +23,27 @@ public class MemberController {
     public MemberService mService;
 
     @PostMapping("/join")
-    public String join(@RequestBody JSONObject joinData) {
-        System.out.println(("username >>> "+ joinData.get("username")));
-        return "joinSuccess";
+    public member join(@RequestBody JSONObject joinData) throws Exception {
+        return mService.join(joinData);
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody JSONObject loginData) throws Exception {
-        String username = loginData.get("username").toString();
-        String password = loginData.get("password").toString();
-        List<member> m = mService.login(username, password);
-        System.out.println("controllers member r>>> " + m.get(0).getAddress());
-        return "loginSuccess";
+    public member login(@RequestBody JSONObject loginData) throws Exception {
+        member loginCheck = mService.findByUsernameAndPassword(loginData.get("username").toString(), loginData.get("password").toString());
+        return loginCheck;
     }
 
     @PostMapping("/findIdByEmail")
-    public String findIdByEmail(@RequestParam("email") String email) {
-        System.out.println("find info email >>> " + email);
-        return "ok";
+    public long findIdByEmail(@RequestParam("email") String email) throws Exception {
+
+        return mService.countByEmailIs(email);
     }
 
     @PostMapping("/findPwdByInfo")
-    public String findPwdByInfo(@RequestBody JSONObject findPwdInfo) {
-        System.out.println("username >>> " + findPwdInfo);
-        return "okok";
+    public member findPwdByInfo(@RequestBody JSONObject findPwdInfo) throws Exception {
+        String username = findPwdInfo.get("username").toString();
+        String email = findPwdInfo.get("email").toString();
+        return mService.findByUsernameIsAndEmailIs(username, email);
     }
 
     @PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE }, value = "/test")

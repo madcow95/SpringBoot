@@ -28,7 +28,7 @@
             <input type="email" class="form-control" id="email" name="email" style="width: 25%; margin: 0 auto; text-align: center">
         </div>
         <div class="form-group" >
-            <label for="exampleInputAddress1" style="color: darkslategray;">이메일<button type="button" class="btn btn-primary" name="findAddr" id="findAddr" style="margin-left: 10px;">주소찾기</button></label>
+            <label for="exampleInputAddress1" style="color: darkslategray;">기본주소<button type="button" class="btn btn-primary" name="findAddr" id="findAddr" style="margin-left: 10px;">주소찾기</button></label>
             <input type="text" class="form-control" id="address" name="address" style="width: 25%; margin: 0 auto; text-align: center">
             <label for="exampleInputAddressDetail1" style="color: darkslategray;">상세주소</label>
             <input type="text" class="form-control" id="addressDetail" name="addressDetail" style="width: 25%; margin: 0 auto; text-align: center">
@@ -78,9 +78,7 @@
                 method: "POST",
                 contentType: "application/json; charset=UTF-8",
                 success: function (res) {
-                    if(res == "joinSuccess") {
-                        alert("회원가입 완료");
-                    }
+                    console.log(res);
                 }
             });
         }

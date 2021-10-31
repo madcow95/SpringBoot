@@ -5,6 +5,7 @@ import com.example.demo.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j;
 import lombok.extern.log4j.Log4j2;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
@@ -24,12 +25,34 @@ public class MemberService {
         return mList;
     }
 
-    public List<member> login(@Param("username") String id, @Param("password") String pwd) throws Exception {
-        System.out.println("service >>>>>>>>> " + id);
-        System.out.println("service >>>>>>>>> " + pwd);
-        List<member> m = mRepository.login(id, pwd);
-        System.out.println("service >>>>>>>>> " + m);
-        return m;
+    public member findByUsernameAndPassword(@Param("username") String id, @Param("password") String pwd) throws Exception {
+        member loginCheck = mRepository.findByUsernameAndPassword(id, pwd);
+        return loginCheck;
+    }
+
+    public member join(JSONObject joinData) throws Exception {
+
+        member m = new member();
+        String username = joinData.get("username").toString();
+        String password = joinData.get("password").toString();
+        String irum = joinData.get("irum").toString();
+        String email = joinData.get("email").toString();
+        String address = joinData.get("address").toString();
+        m.setUsername(username);
+        m.setPassword(password);
+        m.setIrum(irum);
+        m.setEmail(email);
+        m.setAddress(address);
+
+        return mRepository.save(m);
+    }
+
+    public long countByEmailIs(@Param("email") String email) throws Exception {
+        return mRepository.countByEmailIs(email);
+    }
+
+    public member findByUsernameIsAndEmailIs(@Param("username") String username, @Param("email") String email) throws Exception {
+        return mRepository.findByUsernameIsAndEmailIs(username, email);
     }
 
 }
