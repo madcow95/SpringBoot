@@ -24,11 +24,6 @@
             <input type="text" class="form-control" id="content" name="content"
                    style="width: 25%; margin: 0 auto; text-align: center">
         </div>
-        <div class="form-group">
-            <label style="color: darkslategray;">첨부파일 넣을 곳</label>
-            <input type="text" class="form-control" id="file" name="file"
-                   style="width: 25%; margin: 0 auto; text-align: center">
-        </div>
     </div>
     <div style="margin: 0 auto; text-align: center; padding-top: 20px;">
         <button type="button" class="btn btn-danger" name="cancel" id="cancel">취소</button>
@@ -45,7 +40,6 @@
         let writer = document.getElementById("writer");
         let title = document.getElementById("writer");
         let content = document.getElementById("content");
-        let file = document.getElementById("file");
         let inputData = {
             writer: writer,
             title: title,
@@ -60,7 +54,7 @@
             content.focus();
         } else {
             $.ajax({
-                url: "board/write",
+                url: "../board/write",
                 contentType: "application/json; charset=UTF-8",
                 data: JSON.stringify(inputData),
                 type: "POST",

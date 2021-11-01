@@ -1,7 +1,5 @@
 package com.example.demo.domain;
 
-import com.example.demo.mapper.MemberMapper;
-import com.example.demo.repository.MemberRepository;
 import lombok.*;
 
 import javax.persistence.Entity;

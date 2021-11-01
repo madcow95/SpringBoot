@@ -18,18 +18,33 @@
     </div>
     <div class="table-responsive" style="margin-top: 25px;">
         <table class="table">
-            <thead>
-                <th>글번호</th>
-                <th>제목</th>
-                <th>작성자</th>
-                <th>조회수</th>
-            </thead>
             <tbody>
-                <td>1</td>
-                <td><a href="/main/read">글 제목 넣을곳</a></td>
-                <td>나</td>
-                <td>5267</td>
+            <tr>
+            {{#freeBoardList}}
+                <tr>
+                    <td>
+                        {{bno}}
+                    </td>
+                    <td>
+                        {{title}}
+                    </td>
+                    <td>
+                        {{username}}
+                    </td>
+                    <td>
+                        {{readcount}}
+                    </td>
+                </tr>
+            {{/freeBoardList}}
             </tbody>
+            <thead>
+                <tr>
+                    <td>글번호</td>
+                    <td>제목</td>
+                    <td>작성자</td>
+                    <td>조회수</td>
+                </tr>
+            </thead>
         </table>
         <div>
             <button type="button" id="createBoard">
