@@ -18,25 +18,6 @@
     </div>
     <div class="table-responsive" style="margin-top: 25px;">
         <table class="table">
-            <tbody>
-            <tr>
-            {{#freeBoardList}}
-                <tr>
-                    <td>
-                        {{bno}}
-                    </td>
-                    <td>
-                        {{title}}
-                    </td>
-                    <td>
-                        {{username}}
-                    </td>
-                    <td>
-                        {{readcount}}
-                    </td>
-                </tr>
-            {{/freeBoardList}}
-            </tbody>
             <thead>
                 <tr>
                     <td>글번호</td>
@@ -45,6 +26,24 @@
                     <td>조회수</td>
                 </tr>
             </thead>
+            <tbody>
+                {{#freeBoardList}}
+                <tr>
+                    <td>
+                        {{bno}}
+                    </td>
+                    <td>
+                        <a href="/boardRead/freeboardRead?bno={{bno}}">{{title}}</a>
+                    </td>
+                    <td>
+                        {{username}}
+                    </td>
+                    <td>
+                        {{readcount}}
+                    </td>
+                </tr>
+                {{/freeBoardList}}
+            </tbody>
         </table>
         <div>
             <button type="button" id="createBoard">

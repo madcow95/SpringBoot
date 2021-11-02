@@ -24,6 +24,12 @@ public class BoardController {
         return "success";
     }
 
+    @GetMapping("/read")
+    public String freeboardRead(@RequestParam("bno") Integer bno) throws Exception {
+
+        return "location";
+    }
+
     // 영화 추천 게시판
 
 }

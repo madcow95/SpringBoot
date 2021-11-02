@@ -12,4 +12,8 @@ public interface FreeboardRepository extends JpaRepository<freeboard, String> {
 
     @Override
     List<freeboard> findAll();
+
+    freeboard findByBnoIs(Integer bno);
+
+
 }

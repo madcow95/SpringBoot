@@ -20,4 +20,8 @@ public class FreeboardService {
     public List<freeboard> findAll() throws Exception {
         return fbRepository.findAll();
     }
+
+    public freeboard findByBnoIs(Integer bno) throws Exception {
+        return fbRepository.findByBnoIs(bno);
+    }
 }

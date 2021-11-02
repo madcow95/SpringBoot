@@ -9,17 +9,18 @@
 {{>include/header}}
 <body style="background-color: antiquewhite;">
     <div style="margin: 0 auto; text-align: center; padding-top: 10%;">
+        <input type="hidden" value="{{freeboardRead.bno}}" name="bno" id="bno">
         <div class="form-group" >
             <label style="color: darkslategray;">작성자</label>
-            <input type="text" class="form-control" id="writer" name="writer" style="width: 25%; margin: 0 auto; text-align: center" disabled>
+            <input type="text" class="form-control" id="writer" name="writer" value="{{freeboardRead.username}}" style="width: 25%; margin: 0 auto; text-align: center" disabled>
         </div>
         <div class="form-group" >
             <label style="color: darkslategray;">제목</label>
-            <input type="text" class="form-control" id="title" name="title" style="width: 25%; margin: 0 auto; text-align: center" disabled>
+            <input type="text" class="form-control" id="title" name="title" value="{{freeboardRead.title}}" style="width: 25%; margin: 0 auto; text-align: center" disabled>
         </div>
         <div class="form-group" >
             <label style="color: darkslategray;">내용</label>
-            <input type="text" class="form-control" id="content" name="content" style="width: 25%; margin: 0 auto; text-align: center" disabled>
+            <input type="text" class="form-control" id="content" name="content" value="{{freeboardRead.content}}" style="width: 25%; margin: 0 auto; text-align: center" disabled>
         </div>
     </div>
     <div style="margin: 0 auto; text-align: center; padding-top: 20px;">
