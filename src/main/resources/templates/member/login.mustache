@@ -44,12 +44,17 @@
                 "password": password.value
             }
             $.ajax({
-                url: "/member/login",
+                url: "../main/login",
                 data: JSON.stringify(loginData),
                 contentType: "application/json; charset=UTF-8",
                 method: "POST",
                 success: function (res) {
-                    console.log(res);
+                    if(res == 0) {
+                        alert("일치하는 정보가 없습니다.");
+                    } else {
+                        location.href="../main/home";
+                    }
+
                 }
             });
         }

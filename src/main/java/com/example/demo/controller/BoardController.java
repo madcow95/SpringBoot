@@ -24,10 +24,15 @@ public class BoardController {
         return "success";
     }
 
-    @GetMapping("/read")
-    public String freeboardRead(@RequestParam("bno") Integer bno) throws Exception {
-
-        return "location";
+    @PostMapping("/delete")
+    public Long boardModify(@RequestBody JSONObject delData) throws Exception {
+        Integer bno = Integer.valueOf(delData.get("bno").toString());
+        String username = delData.get("writer").toString();
+        System.out.println("bno >>> " + bno);
+        System.out.println("writer >>>" + username);
+        Long result = fbService.deleteByBnoAndUsername(bno, username);
+        System.out.println(result);
+        return result;
     }
 
     // 영화 추천 게시판

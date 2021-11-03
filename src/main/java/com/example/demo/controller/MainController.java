@@ -1,14 +1,16 @@
 package com.example.demo.controller;
 
 import com.example.demo.domain.freeboard;
+import com.example.demo.domain.member;
 import com.example.demo.service.FreeboardService;
+import com.example.demo.service.MemberService;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -17,6 +19,9 @@ public class MainController {
 
     @Autowired
     public FreeboardService fbService;
+
+    @Autowired
+    public MemberService mService;
 
     @GetMapping("/home")
     public String home() { return "home"; }
@@ -41,4 +46,23 @@ public class MainController {
     public String createBoard() { return "/board/write"; }
     @GetMapping("/read")
     public String readBoard() { return "/board/read"; }
+
+    @PostMapping("/login")
+    public @ResponseBody Integer login(@RequestBody JSONObject loginData, HttpSession session) throws Exception {
+        member loginCheck = mService.findByUsernameAndPassword(loginData.get("username").toString(), loginData.get("password").toString());
+        Integer result = 0;
+        if(loginCheck == null) {
+            result = 0;
+        } else {
+            result = 1;
+            member m = new member();
+            m.setUsername(loginCheck.getUsername());
+            m.setPassword(loginCheck.getPassword());
+            m.setIrum(loginCheck.getIrum());
+            m.setEmail(loginCheck.getEmail());
+            m.setAddress(loginCheck.getAddress());
+            session.setAttribute("loginUser", m);
+        }
+        return result;
+    }
 }

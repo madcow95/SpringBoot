@@ -24,4 +24,8 @@ public class FreeboardService {
     public freeboard findByBnoIs(Integer bno) throws Exception {
         return fbRepository.findByBnoIs(bno);
     }
+
+    public Long deleteByBnoAndUsername(Integer bno, String username) throws Exception {
+        return fbRepository.deleteByBnoAndUsername(bno, username);
+    }
 }

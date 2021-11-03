@@ -19,12 +19,22 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/main/home">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/main/login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/main/join">Join</a>
-                    </li>
+                    {{^loginUser}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/main/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/main/join">Join</a>
+                        </li>
+                    {{/loginUser}}
+                    {{#loginUser}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/main/mypage">My Page</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/main/logout">Logout</a>
+                        </li>
+                    {{/loginUser}}
                     <li class="nav-item">
                         <a class="nav-link" href="/main/board">Board</a>
                     </li>
