@@ -23,6 +23,7 @@ public class MainController {
     @Autowired
     public MemberService mService;
 
+    // 단순 페이지 이동
     @GetMapping("/home")
     public String home() { return "home"; }
     @GetMapping("/login")
@@ -35,17 +36,20 @@ public class MainController {
     }
     @GetMapping("/board")
     public String board(){ return "/board/board"; }
-    @GetMapping("/freeBoard")
-    public String freeBoard(Model model) throws Exception{
-        model.addAttribute("freeBoardList", fbService.findAll());
-        return "/board/freeBoard";
-    }
     @GetMapping("/findInfo")
     public String findInfo() { return "/member/findInfo"; }
     @GetMapping("/createBoard")
     public String createBoard() { return "/board/write"; }
     @GetMapping("/read")
     public String readBoard() { return "/board/read"; }
+
+    // 데이터 전송 후 이동
+
+    @GetMapping("/freeBoard")
+    public String freeBoard(Model model) throws Exception{
+        model.addAttribute("freeBoardList", fbService.findAll());
+        return "/board/freeBoard";
+    }
 
     @PostMapping("/login")
     public @ResponseBody Integer login(@RequestBody JSONObject loginData, HttpSession session) throws Exception {
@@ -64,5 +68,11 @@ public class MainController {
             session.setAttribute("loginUser", m);
         }
         return result;
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) throws Exception {
+        session.invalidate();
+        return "/home";
     }
 }
