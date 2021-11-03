@@ -111,5 +111,6 @@
 
 ### 11/3
 #### 1. 게시글 삭제 완료
-#### 2. 로그인 후 header 부분 변화
+#### 2. 로그인 후 header 부분 변화 ==> {{^loginUser}}...{{/loginUser}} -> session에 loginUser 데이터 없을 때
+####                               ==> {{#loginUser}}...{{/loginUser}} -> session에 loginUser 데이터 있을 때
 #### 3. 로그아웃 완료
