@@ -20,6 +20,4 @@ public interface FreeboardRepository extends JpaRepository<freeboard, String> {
     long deleteByBnoAndUsername(Integer bno, String username);
 
 
-
-
 }

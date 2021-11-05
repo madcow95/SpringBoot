@@ -22,6 +22,10 @@
             <label style="color: darkslategray;">내용</label>
             <input type="text" class="form-control" id="content" name="content" value="{{freeboardRead.content}}" style="width: 25%; margin: 0 auto; text-align: center" disabled>
         </div>
+        <div class="form-group" >
+            <label style="color: darkslategray;">조회수</label>
+            <input type="text" class="form-control" id="readCount" name="readCount" value="{{freeboardRead.readcount}}" style="width: 25%; margin: 0 auto; text-align: center" disabled>
+        </div>
     </div>
     <div style="margin: 0 auto; text-align: center; padding-top: 20px;">
         <button type="button" class="btn btn-danger" name="cancel" id="cancel">취소</button>
@@ -45,26 +49,33 @@
     });
 
     $("#modifyWriteComp").on("click", function () {
+        let bno = $("#bno").val();
         let writer = $("#writer").val();
         let title = $("#title").val();
         let content = $("#content").val();
+        let readCount = $("#readCount").val();
+
         $("#title").attr("disabled", "disabled");
         $("#content").attr("disabled", "disabled");
         $("#modifyWrite").css("display", "");
         $("#modifyWriteComp").css("display", "none");
 
         let inputData = {
-            "writer": writer,
+            "bno": bno,
             "title": title,
-            "content": content
+            "content": content,
+            "writer": writer,
+            "readCount": readCount
         }
         $.ajax({
-           url: "board/modify",
+           url: "../board/modify",
            data: JSON.stringify(inputData),
            type: "POST",
            contentType: "application/json; charset=UTF-8",
-           success: function (res) {
-
+           success: function () {
+               alert("수정이 완료되었습니다.");
+               $("#title").val(title);
+               $("#content").val(content);
            }
         });
     });

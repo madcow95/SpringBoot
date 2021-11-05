@@ -35,6 +35,17 @@ public class BoardController {
         return result;
     }
 
+    @PostMapping("/modify")
+    public void freeBoardModify(@RequestBody JSONObject modifyData) throws Exception {
+        freeboard fb = new freeboard();
+        fb.setBno(Integer.valueOf(modifyData.get("bno").toString()));
+        fb.setTitle(modifyData.get("title").toString());
+        fb.setContent(modifyData.get("content").toString());
+        fb.setUsername(modifyData.get("writer").toString());
+        fb.setReadcount(Integer.valueOf(modifyData.get("readCount").toString()));
+        fbService.save(fb);
+    }
+
     // 영화 추천 게시판
 
 }
