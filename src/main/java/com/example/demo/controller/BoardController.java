@@ -15,13 +15,10 @@ public class BoardController {
 
     // 자유게시판
     @PostMapping("/write")
-    public String boardWrite(@RequestBody JSONObject writeData) throws Exception {
+    public freeboard boardWrite(@RequestBody JSONObject inputData) throws Exception {
         freeboard fb = new freeboard();
-        fb.setTitle(writeData.get("title").toString());
-        fb.setContent(writeData.get("content").toString());
-        fb.setUsername(writeData.get("writer").toString());
-        fbService.save(fb);
-        return "success";
+        fb = fbService.save(inputData);
+        return fb;
     }
 
     @PostMapping("/delete")
@@ -43,7 +40,7 @@ public class BoardController {
         fb.setContent(modifyData.get("content").toString());
         fb.setUsername(modifyData.get("writer").toString());
         fb.setReadcount(Integer.valueOf(modifyData.get("readCount").toString()));
-        fbService.save(fb);
+        fbService.saveModify(fb);
     }
 
     // 영화 추천 게시판

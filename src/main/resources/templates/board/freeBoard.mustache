@@ -46,9 +46,11 @@
             </tbody>
         </table>
         <div>
-            <button type="button" id="createBoard">
-                게시글 쓰기
-            </button>
+            {{#loginUser}}
+                <button type="button" id="createBoard">
+                    게시글 쓰기
+                </button>
+            {{/loginUser}}
         </div>
     </div>
 </body>
