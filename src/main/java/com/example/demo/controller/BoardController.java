@@ -17,7 +17,11 @@ public class BoardController {
     @PostMapping("/write")
     public freeboard boardWrite(@RequestBody JSONObject inputData) throws Exception {
         freeboard fb = new freeboard();
-        fb = fbService.save(inputData);
+        fb.setTitle(inputData.get("title").toString());
+        fb.setContent(inputData.get("content").toString());
+        fb.setUsername(inputData.get("writer").toString());
+        fb.setReadcount(0);
+        fb = fbService.save(fb);
         return fb;
     }
 

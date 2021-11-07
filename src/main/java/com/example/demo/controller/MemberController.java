@@ -42,10 +42,9 @@ public class MemberController {
         return mService.findByUsernameIsAndEmailIs(username, email);
     }
 
-    @PostMapping(produces = { MediaType.APPLICATION_JSON_VALUE }, value = "/test")
-    public ResponseEntity<List<member>> getAllmembers() throws Exception {
-        List<member> mList = mService.getMemberList();
-        return new ResponseEntity<List<member>>(mList, HttpStatus.OK);
+    @PostMapping("/idCheck")
+    public boolean idCheck(@RequestParam("username") String username) throws Exception {
+        return mService.existsByUsernameIs(username);
     }
 
 }

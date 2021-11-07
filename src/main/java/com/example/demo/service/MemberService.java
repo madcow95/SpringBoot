@@ -55,4 +55,8 @@ public class MemberService {
         return mRepository.findByUsernameIsAndEmailIs(username, email);
     }
 
+    public boolean existsByUsernameIs(@Param("username") String username) throws Exception {
+        return mRepository.existsByUsernameIs(username);
+    }
+
 }

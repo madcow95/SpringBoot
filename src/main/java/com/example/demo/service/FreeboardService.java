@@ -14,12 +14,8 @@ public class FreeboardService {
     @Autowired
     public FreeboardRepository fbRepository;
 
-    public freeboard save(JSONObject joinObj) throws Exception {
-        freeboard fb = new freeboard();
-        fb.setTitle(joinObj.get("title").toString());
-        fb.setContent(joinObj.get("content").toString());
-        fb.setUsername(joinObj.get("writer").toString());
-        fb.setReadcount(0);
+    public freeboard save(freeboard fb) throws Exception {
+
         return fbRepository.save(fb);
     }
 

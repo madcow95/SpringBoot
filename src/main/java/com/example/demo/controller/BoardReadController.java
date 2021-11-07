@@ -19,6 +19,8 @@ public class BoardReadController {
     @GetMapping("/freeboardRead")
     public String freeboardRead(@RequestParam("bno") Integer bno, Model model) throws Exception {
         freeboard fb = fbService.findByBnoIs(bno);
+        fb.setReadcount(fb.getReadcount() + 1);
+        fbService.save(fb);
         model.addAttribute("freeboardRead", fb);
         return "board/read";
     }

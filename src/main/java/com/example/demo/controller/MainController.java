@@ -42,6 +42,8 @@ public class MainController {
     public String createBoard() { return "/board/write"; }
     @GetMapping("/read")
     public String readBoard() { return "/board/read"; }
+    @GetMapping("/mypage")
+    public String myPage() { return "/member/mypage"; }
 
     // 데이터 전송 후 이동
 

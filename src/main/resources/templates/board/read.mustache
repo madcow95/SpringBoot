@@ -10,6 +10,7 @@
 <body style="background-color: antiquewhite;">
     <div style="margin: 0 auto; text-align: center; padding-top: 10%;">
         <input type="hidden" value="{{freeboardRead.bno}}" name="bno" id="bno">
+        <input type="hidden" value="{{loginUser.username}}" name="loginUsername" id="loginUsername">
         <div class="form-group" >
             <label style="color: darkslategray;">작성자</label>
             <input type="text" class="form-control" id="writer" name="writer" value="{{freeboardRead.username}}" style="width: 25%; margin: 0 auto; text-align: center" disabled>
@@ -29,7 +30,7 @@
     </div>
     <div style="margin: 0 auto; text-align: center; padding-top: 20px;">
         <button type="button" class="btn btn-danger" name="cancel" id="cancel">취소</button>
-        <button type="button" class="btn btn-success" name="modifyWrite" id="modifyWrite">게시글 수정</button>
+        <button type="button" class="btn btn-success" name="modifyWrite" id="modifyWrite" style="display: none;">게시글 수정</button>
         <button type="button" class="btn btn-success" name="modifyWriteComp" id="modifyWriteComp" style="display: none">게시글 수정완료</button>
         <button type="button" class="btn btn-primary" name="deleteWrite" id="deleteWrite">게시글 삭제</button>
     </div>
@@ -41,6 +42,13 @@
 </body>
 {{>include/footer}}
 <script>
+
+    $(document).ready(function () {
+       if($("#loginUsername").val() == $("#writer").val()) {
+            $("#modifyWrite").css("display", "");
+        }
+    });
+
     $("#modifyWrite").on("click", function () {
         $("#title").removeAttr("disabled");
         $("#content").removeAttr("disabled");
