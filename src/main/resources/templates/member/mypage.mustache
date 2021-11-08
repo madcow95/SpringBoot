@@ -6,9 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+<body style="background-color: antiquewhite;">
 {{>include/header}}
-
+    <div style="margin: 0 auto; text-align: center; padding-top: 10%;">
+        <div class="form-group" >
+            <label for="exampleInputId1" style="color: darkslategray;">아이디</label>
+            <input type="text" class="form-control" id="username" disabled name="username" value="{{loginUser.username}}" style="width: 25%; margin: 0 auto; text-align: center">
+            <input type="text" id="idChkRes" name="idChkRes" style="width: 25%; margin: 0 auto; text-align: center; font-size: 8px; border: none; background-color: antiquewhite;" disabled>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1" style="color: darkslategray;">비밀번호</label>
+            <input type="password" class="form-control" id="password" name="password" style="width: 25%; margin: 0 auto; text-align: center">
+            <input type="text" id="pwdChkRes" name="pwdChkRes" style="width: 25%; margin: 0 auto; text-align: center; font-size: 8px; border: none; background-color: antiquewhite;" disabled>
+        </div>
+        <div class="form-group" >
+            <label for="exampleInputName1" style="color: darkslategray;">이름</label>
+            <input type="text" class="form-control" id="irum" disabled value="{{loginUser.irum}}" name="irum" style="width: 25%; margin: 0 auto; text-align: center">
+            <input type="text" style="width: 25%; margin: 0 auto; text-align: center; font-size: 8px; border: none; background-color: antiquewhite;" disabled>
+        </div>
+        <div class="form-group" >
+            <label for="exampleInputEmail11" style="color: darkslategray;">이메일</label>
+            <input type="email" class="form-control" value="{{loginUser.email}}" disabled id="email" name="email" style="width: 25%; margin: 0 auto; text-align: center">
+            <input type="text" style="width: 25%; margin: 0 auto; text-align: center; font-size: 8px; border: none; background-color: antiquewhite;" disabled>
+        </div>
+        <div class="form-group" >
+            <label for="exampleInputAddress1" style="color: darkslategray;">주소<button type="button" class="btn btn-primary" name="findAddr" id="findAddr" style="margin-left: 10px;">주소찾기</button></label>
+            <input type="text" class="form-control" id="address" value="{{loginUser.address}}" disabled name="address" style="width: 25%; margin: 0 auto; text-align: center">
+        </div>
+    </div>
 {{>include/footer}}
 </body>
 </html>

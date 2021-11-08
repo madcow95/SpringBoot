@@ -47,4 +47,9 @@ public class MemberController {
         return mService.existsByUsernameIs(username);
     }
 
+    @PostMapping("/toMyPage")
+    public boolean toMyPage(@RequestBody JSONObject myPageData) throws Exception {
+        return mService.existsByUsernameIsAndPasswordIs(myPageData.get("username").toString(), myPageData.get("password").toString());
+    }
+
 }
