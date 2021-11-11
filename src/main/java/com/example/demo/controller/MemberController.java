@@ -52,4 +52,22 @@ public class MemberController {
         return mService.existsByUsernameIsAndPasswordIs(myPageData.get("username").toString(), myPageData.get("password").toString());
     }
 
+    @PostMapping("/updateInfo")
+    public int updateInfo(@RequestBody JSONObject updateData, HttpSession session) throws Exception {
+        member m = new member();
+        m.setUsername(updateData.get("username").toString());
+        m.setPassword(updateData.get("password").toString());
+        m.setAddress(updateData.get("address").toString());
+        m.setIrum(updateData.get("irum").toString());
+        m.setEmail(updateData.get("email").toString());
+        int result = 0;
+        System.out.println("update >>> "+mService.updateInfo(m));
+        if(mService.updateInfo(m) != null) {
+            session.removeAttribute("loginUser");
+            session.setAttribute("loginUser", mService.updateInfo(m));
+            result = 1;
+        }
+        return  result;
+    }
+
 }

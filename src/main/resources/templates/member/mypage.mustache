@@ -15,9 +15,17 @@
             <input type="text" id="idChkRes" name="idChkRes" style="width: 25%; margin: 0 auto; text-align: center; font-size: 8px; border: none; background-color: antiquewhite;" disabled>
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1" style="color: darkslategray;">비밀번호</label>
-            <input type="password" class="form-control" id="password" name="password" style="width: 25%; margin: 0 auto; text-align: center">
+            <label for="exampleInputPassword1" style="color: darkslategray;">비밀번호
+                <button class="btn btn-success" type="button" id="activePwd">비밀번호 변경</button>
+                <button class="btn btn-success" type="button" id="cancelPwd" style="display: none;">비밀번호 변경 취소</button>
+            </label>
+            <input type="password" class="form-control" id="password" name="password" style="width: 25%; margin: 0 auto; text-align: center" disabled>
             <input type="text" id="pwdChkRes" name="pwdChkRes" style="width: 25%; margin: 0 auto; text-align: center; font-size: 8px; border: none; background-color: antiquewhite;" disabled>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1" style="color: darkslategray;">비밀번호 확인</label>
+            <input type="password" class="form-control" id="passwordChk" name="passwordChk" style="width: 25%; margin: 0 auto; text-align: center" disabled>
+            <input type="text" id="pwdChkRes2" name="pwdChkRes2" style="width: 25%; margin: 0 auto; text-align: center; font-size: 8px; border: none; background-color: antiquewhite;" disabled>
         </div>
         <div class="form-group" >
             <label for="exampleInputName1" style="color: darkslategray;">이름</label>
@@ -34,6 +42,101 @@
             <input type="text" class="form-control" id="address" value="{{loginUser.address}}" disabled name="address" style="width: 25%; margin: 0 auto; text-align: center">
         </div>
     </div>
+    <div style="margin: 0 auto; text-align: center; padding-top: 20px;">
+        <button type="button" class="btn btn-danger" name="cancel" id="cancel">취소</button>
+        <button type="button" class="btn btn-success" name="updateInfo" id="updateInfo">정보 수정</button>
+    </div>
 {{>include/footer}}
+<script>
+    $("#password").on("change keyup paste", function () {
+       if($("#password").val().length < 4) {
+           $("#pwdChkRes").val("4글자 이상 입력해주세요").css("color", "red").css("font-size", "8px");
+       } else {
+           $("#pwdChkRes").val("");
+       }
+    });
+
+    $("#passwordChk").on("change keyup paste", function () {
+       if($("#password").val() != $("#passwordChk").val()) {
+           $("#pwdChkRes2").val("비밀번호를 확인해주세요").css("color", "red").css("font-size", "8px");
+       } else {
+           $("#pwdChkRes2").val("비밀번호가 일치합니다.").css("color", "blue").css("font-size", "8px");
+       }
+    });
+
+    $("#updateInfo").on("click", function () {
+
+        if(document.getElementById("password").disabled == false && document.getElementById("passwordChk").disabled == false) {
+            if($("#password").val() == "" || $("#password").val() == undefined) {
+                alert("비밀번호를 입력해주세요.");
+            } else if($("#passwordChk").val() == "" || $("#passwordChk").val() == undefined) {
+                alert("비밀번호 확인란을 입력해주세요.");
+            } else if($("#password").val().length < 4) {
+                alert("비밀번호는 4글자 이상 입력해주세요.");
+            } else if($("#password").val() != $("#passwordChk").val()) {
+                alert("비밀번호가 일치하지 않습니다.");
+            } else {
+                document.getElementById("password").disabled = false;
+                document.getElementById("username").disabled = false;
+                document.getElementById("address").disabled = false;
+                document.getElementById("email").disabled = false;
+                document.getElementById("irum").disabled = false;
+                let pwd = $("#password").val();
+                let username = $("#username").val();
+                let address = $("#address").val();
+                let email = $("#email").val();
+                let irum = $("#irum").val();
+                let updateData = {
+                    username: username,
+                    password: pwd,
+                    address: address,
+                    email: email,
+                    irum: irum
+                }
+                console.log(updateData);
+                $.ajax({
+                    url: "../member/updateInfo",
+                    type: "POST",
+                    data: JSON.stringify(updateData),
+                    contentType: "application/json; charset=UTF-8",
+                    success: function (res) {
+                        console.log(res);
+                        if(res > 0) {
+                            alert("정보수정이 완료되었습니다.");
+                            document.getElementById("passwordChk").disabled = true;
+                            document.getElementById("password").disabled = true;
+                            document.getElementById("irum").disabled = true;
+                            document.getElementById("email").disabled = true;
+                            document.getElementById("username").disabled = true;
+                            document.getElementById("address").disabled = true;
+                        }
+                    },
+                    fail: function () {
+                        alert("오류가 발생했습니다. \n잠시후 다시 시도해주세요.")
+                    },
+                    error: function () {
+                        alert("오류가 발생했습니다. \n잠시후 다시 시도해주세요.")
+                    }
+                });
+            }
+        } else {
+            alert("비밀번호 변경을 하려면 \n비밀번호 변경 버튼을 클릭하세요")
+        }
+    });
+
+    $("#activePwd").on("click", function () {
+        $("#activePwd").css("display", "none");
+        $("#cancelPwd").css("display", "");
+        document.getElementById("password").disabled = false;
+        document.getElementById("passwordChk").disabled = false;
+    });
+
+    $("#cancelPwd").on("click", function () {
+        $("#activePwd").css("display", "");
+        $("#cancelPwd").css("display", "none");
+        document.getElementById("password").disabled = true;
+        document.getElementById("passwordChk").disabled = true;
+    });
+</script>
 </body>
 </html>

@@ -63,4 +63,8 @@ public class MemberService {
         return mRepository.existsByUsernameIsAndPasswordIs(username, password);
     }
 
+    public member updateInfo(member m) throws Exception {
+        return mRepository.save(m);
+    }
+
 }
