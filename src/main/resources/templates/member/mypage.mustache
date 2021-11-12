@@ -67,6 +67,7 @@
     $("#updateInfo").on("click", function () {
 
         if(document.getElementById("password").disabled == false && document.getElementById("passwordChk").disabled == false) {
+            // 비밀번호가 입력되지 않았을 때 비밀번호는 그대로 유지하면서 다른 정보들만 바뀌게 변경 해봅시다.
             if($("#password").val() == "" || $("#password").val() == undefined) {
                 alert("비밀번호를 입력해주세요.");
             } else if($("#passwordChk").val() == "" || $("#passwordChk").val() == undefined) {

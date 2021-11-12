@@ -31,7 +31,7 @@
         </div>
     </div>
     <div style="margin: 0 auto; text-align: center; padding-top: 20px;">
-        <button type="button" class="btn btn-danger" name="cancel" id="cancel">취소</button>
+        <button type="button" class="btn btn-danger" id="cancel">취소</button>
         <button type="button" class="btn btn-success" name="modifyWrite" id="modifyWrite" style="display: none;">게시글 수정</button>
         <button type="button" class="btn btn-success" name="modifyWriteComp" id="modifyWriteComp" style="display: none">게시글 수정완료</button>
         <button type="button" class="btn btn-primary" name="deleteWrite" id="deleteWrite" style="display: none;">게시글 삭제</button>
@@ -45,6 +45,9 @@
 {{>include/footer}}
 <script>
 
+    $("#cancel").on("click", function () {
+       location.href="../main/freeBoard";
+    });
     $(document).ready(function () {
        if($("#loginUsername").val() == $("#writer").val()) {
             $("#modifyWrite").css("display", "");

@@ -26,11 +26,16 @@
                 <th>평점</th>
             </thead>
             <tbody>
-                <td><a href="/main/read">이미지를 아직 못넣겠어요.. 어떡하죠?</a></td>
-                <td>영화 제목</td>
-                <td>출연 배우들 주연만 넣을꺼임</td>
-                <td>나</td>
-                <td>1.6</td>
+                {{#boardList}}
+                    <td><a href="/main/read">이미지를 아직 못넣겠어요.. 어떡하죠?</a></td>
+                    <td>영화 제목</td>
+                    <td>출연 배우들 주연만 넣을꺼임</td>
+                    <td>나</td>
+                    <td>1.6</td>
+                {{/boardList}}
+                {{^boardList}}
+                    <td colspan="5"><h1>게시글이 하나도 없네요...</h1></td>
+                {{/boardList}}
             </tbody>
         </table>
         <div>
