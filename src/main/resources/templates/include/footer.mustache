@@ -75,6 +75,8 @@
     });
 
     $("#exitPage").on("click", function () {
+        // 회원탈퇴 코드 작성은 완료 , javax.persistence.TransactionRequiredException: No EntityManager with actual transaction available for current thread - cannot reliably process 'remove' call
+        // 에러 발생
         let delData = {
             username: $("#exitUsername").val(),
             password: $("#exitPassword").val()
