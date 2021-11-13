@@ -70,4 +70,10 @@ public class MemberController {
         return  result;
     }
 
+    @PostMapping("/exitPage")
+    public long exitPage(@RequestBody JSONObject delData) throws Exception {
+        System.out.println("회원탈퇴후 데이터 >>> "+ mService.deleteByUsernameIsAndPasswordIs(delData.get("username").toString(), delData.get("password").toString()));
+        return mService.deleteByUsernameIsAndPasswordIs(delData.get("username").toString(), delData.get("password").toString());
+    }
+
 }

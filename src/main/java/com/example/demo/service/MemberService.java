@@ -67,4 +67,8 @@ public class MemberService {
         return mRepository.save(m);
     }
 
+    public long deleteByUsernameIsAndPasswordIs(@Param("username") String username, @Param("password") String password) throws Exception {
+        return mRepository.deleteByUsernameIsAndPasswordIs(username, password);
+    }
+
 }

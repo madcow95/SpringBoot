@@ -8,6 +8,7 @@
 </head>
 <body style="background-color: antiquewhite;">
 {{>include/header}}
+<a data-toggle="modal" data-target=".bs-example-modal-lg2" style="display: none;" id="exitModal"></a>
     <div style="margin: 0 auto; text-align: center; padding-top: 10%;">
         <div class="form-group" >
             <label for="exampleInputId1" style="color: darkslategray;">아이디</label>
@@ -45,6 +46,7 @@
     <div style="margin: 0 auto; text-align: center; padding-top: 20px;">
         <button type="button" class="btn btn-danger" name="cancel" id="cancel">취소</button>
         <button type="button" class="btn btn-success" name="updateInfo" id="updateInfo">정보 수정</button>
+        <button type="button" class="btn btn-success" name="exit" id="exit">회원탈퇴</button>
     </div>
 {{>include/footer}}
 <script>
@@ -137,6 +139,15 @@
         $("#cancelPwd").css("display", "none");
         document.getElementById("password").disabled = true;
         document.getElementById("passwordChk").disabled = true;
+    });
+
+    $("#exit").on("click", function () {
+        let check = confirm("회원탈퇴 하시겠습니까?");
+        if(check) {
+            $("#exitModal").click();
+        } else {
+            console.log("NO");
+        }
     });
 </script>
 </body>
