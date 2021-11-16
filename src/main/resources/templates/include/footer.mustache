@@ -12,20 +12,28 @@
     <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div style="margin: 0 auto; text-align: center; padding-top: 10%;">
-                    <div class="form-group" >
-                        <label for="exampleInputEmail1" style="color: darkslategray;">아이디</label>
-                        {{#loginUser}}
-                            <input type="text" class="form-control" id="myPageUsername" name="myPageUsername" readonly value="{{loginUser.username}}" style=" margin: 0 auto; text-align: center;">
-                        {{/loginUser}}
+                <div style="margin: 0 auto; text-align: center; padding-top: 10%; width: 80%;">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Modal title</h4>
+                        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1" style="color: darkslategray;">비밀번호</label>
-                        <input type="password" class="form-control" id="myPagePassword" name="myPagePassword" placeholder="비밀번호를 입력하세요" style=" margin: 0 auto; text-align: center">
+                    <div class="modal-body">
+                        <div class="form-group" >
+                            <label for="exampleInputEmail1" style="color: darkslategray;">아이디</label>
+                            {{#loginUser}}
+                                <input type="text" class="form-control" id="myPageUsername" name="myPageUsername" readonly value="{{loginUser.username}}" style=" margin: 0 auto; text-align: center;">
+                            {{/loginUser}}
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" style="color: darkslategray;">비밀번호</label>
+                            <input type="password" class="form-control" id="myPagePassword" name="myPagePassword" placeholder="비밀번호를 입력하세요" style=" margin: 0 auto; text-align: center">
+                        </div>
                     </div>
-                </div>
-                <div style="margin: 0 auto; text-align: center; padding-top: 20px;">
-                    <button type="button" class="btn btn-primary" name="toMyPage" id="toMyPage">페이지 이동</button>
+                    <div class="modal-footer">
+                        <div style="margin: 0 auto; text-align: center; padding-top: 20px;">
+                            <button type="button" class="btn btn-primary" name="toMyPage" id="toMyPage">페이지 이동</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,6 +60,8 @@
             </div>
         </div>
     </div>
+    <script src="/js/scripts.js"></script>
+    <script src="/js/scripts2.js"></script>
 </footer>
 <script>
     $("#toMyPage").on("click", function () {
