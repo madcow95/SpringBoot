@@ -165,3 +165,17 @@
 
 ### 11/14
 #### 휴식
+<br>
+
+### 11/15 (코로나 확진으로..)
+
+### 11/16
+#### 1. 메인페이지 스타일 변경
+#### header
+![화면 캡처 2021-11-16 223332](https://user-images.githubusercontent.com/78129823/141995192-5578c91c-b2fe-4282-886c-6a1ce5150f22.png)
+
+#### body
+![화면 캡처 2021-11-16 223352](https://user-images.githubusercontent.com/78129823/141995255-f9a227cc-fd8a-4d22-8c5d-886a3ab65ada.png)
+
+
+
