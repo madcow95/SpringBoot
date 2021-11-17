@@ -177,6 +177,11 @@
 
 #### body
 ![화면 캡처 2021-11-16 223352](https://user-images.githubusercontent.com/78129823/141995255-f9a227cc-fd8a-4d22-8c5d-886a3ab65ada.png)
+<br>
+
+### 11/17
+#### 1. 회원가입, 마이페이지에서 추가로 유효성검사 필요한 부분 생겨서 추가
+#### 2. 쇼핑몰 DB설계 tbl_product(pno, pName, pTitle, pContent, pReadCount, pBuyCount, pPrice) tbl_product_img(pno, fileName, path, uid), tbl_product_review(pno, prTitle, prContent, prScore) .. 계속 추가예정
 
 
 
