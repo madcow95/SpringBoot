@@ -106,6 +106,9 @@
                         console.log(res);
                         if(res > 0) {
                             alert("정보수정이 완료되었습니다.");
+                            $("#password").val("");
+                            $("#passwordChk").val("");
+                            $("#pwdChkRes2").val("");
                             document.getElementById("passwordChk").disabled = true;
                             document.getElementById("password").disabled = true;
                             document.getElementById("irum").disabled = true;

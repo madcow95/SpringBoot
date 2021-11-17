@@ -83,7 +83,15 @@
                 method: "POST",
                 contentType: "application/json; charset=UTF-8",
                 success: function (res) {
-                    console.log(res);
+                    if(res) {
+                        alert("회원가입이 완료되었습니다.");
+                        let toLogin = confirm("로그인 페이지로 이동하시겠습니까?");
+                        if(toLogin) {
+                            location.href="../main/login";
+                        } else {
+                            location.href="../main/home";
+                        }
+                    }
                 }
             });
         }
