@@ -46,6 +46,8 @@ public class MainController {
     public String myPage() { return "/member/mypage"; }
     @GetMapping("/test")
     public String testPage() { return "/test"; }
+    @GetMapping("/register")
+    public String register() { return "/product/register"; }
     // 데이터 전송 후 이동
 
     @GetMapping("/freeBoard")

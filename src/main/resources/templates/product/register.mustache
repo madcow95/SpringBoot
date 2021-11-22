@@ -1,0 +1,55 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+{{>include/header}}
+<body>
+<div style="margin: 0 auto; text-align: center; padding-top: 10%;">
+    <div class="form-group">
+        <label style="color: darkslategray;">작성자</label>
+        <input type="text" class="form-control" id="writer" name="writer"
+               style="width: 25%; margin: 0 auto; text-align: center" readonly>
+    </div>
+    <div class="form-group">
+        <label style="color: darkslategray;">제목</label>
+        <input type="text" class="form-control" id="title" name="title"
+               style="width: 25%; margin: 0 auto; text-align: center">
+    </div>
+    <div class="form-group">
+        <label style="color: darkslategray;">내용</label>
+        <input type="text" class="form-control" id="content" name="content"
+               style="width: 25%; margin: 0 auto; text-align: center">
+    </div>
+    사진 등록 : <input type="file" id="imageFile" name="imageFile"><br>
+    <img src="" id="showImg" width="300px;" height="300px;" style="display: none;">
+</div>
+<div style="margin: 0 auto; text-align: center; padding-top: 20px;">
+    <button type="button" class="btn btn-danger" name="cancel" id="cancel">취소</button>
+    <button type="button" class="btn btn-success" name="boardWrite" id="boardWrite">게시글 등록</button>
+</div>
+</body>
+{{>include/footer}}
+<script>
+    $("#imageFile").on("change", function () {
+        console.log("this >>>> ", this);
+        readURL(this);
+    });
+
+    function readURL(fileName) {
+        if(fileName.files && fileName.files[0]) {
+            console.log("fileName >>> ", fileName);
+            let reader = new FileReader();
+            reader.onload = function (e) {
+                console.log("what is e>>> ", e);
+                $("#showImg").css("display", "");
+                $("#showImg").attr("src", e.target.result);
+            }
+            reader.readAsDataURL(fileName.files[0]);
+        }
+    }
+</script>
+</html>
