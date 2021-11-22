@@ -182,6 +182,12 @@
 ### 11/17
 #### 1. 회원가입, 마이페이지에서 추가로 유효성검사 필요한 부분 생겨서 추가
 #### 2. 쇼핑몰 DB설계 tbl_product(pno, pName, pTitle, pContent, pReadCount, pBuyCount, pPrice) tbl_product_img(pno, fileName, path, uid), tbl_product_review(pno, prTitle, prContent, prScore) .. 계속 추가예정
+<br>
 
+### 11/18
+#### 1. 회원 권한 테이블, DTO생성
+#### 2. 상품 테이블, DTO, Service, Repository 생성
+<br>
 
-
+### 11/19 ~ 11/21
+#### 아파서 휴식
