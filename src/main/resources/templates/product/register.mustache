@@ -24,7 +24,9 @@
         <input type="text" class="form-control" id="content" name="content"
                style="width: 25%; margin: 0 auto; text-align: center">
     </div>
-    사진 등록 : <input type="file" id="imageFile" name="imageFile"><br>
+    <form id="imgForm">
+        사진 등록 : <input type="file" id="imageFile" name="imageFile"><br>
+    </form>
     <img src="" id="showImg" width="300px;" height="300px;" style="display: none;">
 </div>
 <div style="margin: 0 auto; text-align: center; padding-top: 20px;">
@@ -35,13 +37,30 @@
 {{>include/footer}}
 <script>
     $("#imageFile").on("change", function () {
-        console.log("this >>>> ", this);
-        readURL(this);
+        saveImage(this);
+        // readURL(this);
     });
+    function saveImage(file) {
+        let form = file.files[0];
+        console.log(form);
+        let formData = new FormData(form);
+        console.log(formData)
+        $.ajax({
+            url : "../product/imageUpload",
+            type : "POST",
+            data : formData,
+            enctype : "multipart/form-data",
+            processData: false,
+            contentType: false,
+            success : function (url) {
+                console.log("return url >>> ",url);
+            }
+        });
+
+    }
 
     function readURL(fileName) {
         if(fileName.files && fileName.files[0]) {
-            console.log("fileName >>> ", fileName);
             let reader = new FileReader();
             reader.onload = function (e) {
                 console.log("what is e>>> ", e);
