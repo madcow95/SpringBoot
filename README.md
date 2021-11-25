@@ -210,4 +210,4 @@
 
 ### 11/25
 #### 1. 이미지 업로드 -> AJAX로 생성된 폴더에 저장 => 완료
-#### TODO => 생성된 경로를 return해서 미리보기 하려고 하면 Not allowed to load local resource Error, 
+#### TODO => 생성된 경로를 return해서 미리보기 하려고 하면 Not allowed to load local resource Error -> 해결 x
